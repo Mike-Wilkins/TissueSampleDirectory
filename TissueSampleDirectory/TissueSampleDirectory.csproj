@@ -176,6 +176,7 @@
     <Compile Include="Controllers\CollectionController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\SampleController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -186,6 +187,14 @@
     <Compile Include="Migrations\202009131641557_AddedCollectionId.cs" />
     <Compile Include="Migrations\202009131641557_AddedCollectionId.designer.cs">
       <DependentUpon>202009131641557_AddedCollectionId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009141353025_AddCollectionTitleToSampleDb.cs" />
+    <Compile Include="Migrations\202009141353025_AddCollectionTitleToSampleDb.designer.cs">
+      <DependentUpon>202009141353025_AddCollectionTitleToSampleDb.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009141357184_AddTitleToSampleDb.cs" />
+    <Compile Include="Migrations\202009141357184_AddTitleToSampleDb.designer.cs">
+      <DependentUpon>202009141357184_AddTitleToSampleDb.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -360,6 +369,7 @@
     <Content Include="Views\Collection\Create.cshtml" />
     <Content Include="Views\Collection\Edit.cshtml" />
     <Content Include="Views\Collection\Delete.cshtml" />
+    <Content Include="Views\Sample\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -381,6 +391,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202009131641557_AddedCollectionId.resx">
       <DependentUpon>202009131641557_AddedCollectionId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009141353025_AddCollectionTitleToSampleDb.resx">
+      <DependentUpon>202009141353025_AddCollectionTitleToSampleDb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009141357184_AddTitleToSampleDb.resx">
+      <DependentUpon>202009141357184_AddTitleToSampleDb.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

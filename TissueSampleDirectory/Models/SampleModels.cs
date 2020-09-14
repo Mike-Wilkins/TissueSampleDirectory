@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
 
 namespace TissueSampleDirectory.Models
 {
@@ -13,6 +10,9 @@ namespace TissueSampleDirectory.Models
 
         [Required]
         public int Collection_Id { get; set; }
+
+        [DisplayName("Collection Title")]
+        public string Collection_Title { get; set; }
 
         [Required]
         public int Donor_Count { get; set; }
