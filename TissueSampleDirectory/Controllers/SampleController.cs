@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using TissueSampleDirectory.Models;
 
@@ -37,8 +35,9 @@ namespace TissueSampleDirectory.Controllers
                 return View();
             }
 
-            var getCollectionTitle = db.CollectionModel.Where(m => m.Title == sample.Collection_Title).FirstOrDefault();
+            ViewBag.CollectionTitle = title;
 
+            var getCollectionTitle = db.CollectionModel.Where(m => m.Title == sample.Collection_Title).FirstOrDefault();
             var newSample = new SampleModels();
 
             newSample.Collection_Title = title;
@@ -49,8 +48,63 @@ namespace TissueSampleDirectory.Controllers
             db.SampleModel.Add(newSample);
             db.SaveChanges();
 
-            var sampleList = db.SampleModel.OrderBy(m => m.Id).ToList();
-            
+            var sampleList = db.SampleModel.Where(m => m.Collection_Title == title).ToList();
+
+            return View("Index", sampleList);
+        }
+
+        //GET: Edit
+        public ActionResult Edit(string title, int id)
+        {
+            var model = db.SampleModel.Where(m => m.Id == id).FirstOrDefault();
+            ViewBag.CollectionTitle = title;
+
+            return View(model);
+        }
+        // POST: Edit
+        [HttpPost]
+        public ActionResult Edit(SampleModels sample, string title)
+        {
+            ViewBag.CollectionTitle = title;
+            var oldSample = db.SampleModel.Where(m => m.Id == sample.Id).FirstOrDefault();
+
+            db.SampleModel.Remove(oldSample);
+            db.SaveChanges();
+
+            var newSample = new SampleModels();
+            newSample.Collection_Title = title;
+            newSample.Donor_Count = sample.Donor_Count;
+            newSample.Material_Type = sample.Material_Type;
+            newSample.Last_Updated = DateTime.Now.ToShortDateString();
+
+            db.SampleModel.Add(newSample);
+            db.SaveChanges();
+
+            var sampleList = db.SampleModel.Where(m => m.Collection_Title == title).ToList();
+
+            return View("Index", sampleList);
+        }
+
+        // GET: Delete
+        public ActionResult Delete(string title, int id)
+        {
+            ViewBag.CollectionTitle = title;
+            var model = db.SampleModel.Where(m => m.Id == id).FirstOrDefault();
+
+            return View(model);
+        }
+        // POST: Delete
+        [HttpPost]
+        [ActionName("Delete")]
+        public ActionResult DeleteSample(string title, int id)
+        {
+
+            ViewBag.CollectionTitle = title;
+            var model = db.SampleModel.Where(m => m.Id == id).FirstOrDefault();
+            db.SampleModel.Remove(model);
+            db.SaveChanges();
+
+            var sampleList = db.SampleModel.Where(m => m.Collection_Title == title).ToList();
 
             return View("Index", sampleList);
         }

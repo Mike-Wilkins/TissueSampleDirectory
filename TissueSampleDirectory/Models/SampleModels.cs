@@ -16,6 +16,7 @@ namespace TissueSampleDirectory.Models
         [DisplayName("Material Type")]
         public string Material_Type { get; set; }
 
+        [DisplayName("Last Updated")]
         public string Last_Updated { get; set; }
 
         public string Collection_Title { get; set; }

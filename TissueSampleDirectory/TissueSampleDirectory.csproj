@@ -363,6 +363,8 @@
     <Content Include="Views\Collection\Delete.cshtml" />
     <Content Include="Views\Sample\Index.cshtml" />
     <Content Include="Views\Sample\Create.cshtml" />
+    <Content Include="Views\Sample\Edit.cshtml" />
+    <Content Include="Views\Sample\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
