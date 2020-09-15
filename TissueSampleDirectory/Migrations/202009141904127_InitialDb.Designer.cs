@@ -7,13 +7,13 @@ namespace TissueSampleDirectory.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class AddCollectionTitleToSampleDb : IMigrationMetadata
+    public sealed partial class InitialDb : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AddCollectionTitleToSampleDb));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialDb));
         
         string IMigrationMetadata.Id
         {
-            get { return "202009141353025_AddCollectionTitleToSampleDb"; }
+            get { return "202009141904127_InitialDb"; }
         }
         
         string IMigrationMetadata.Source

@@ -3,16 +3,16 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class AddedCollectionId : DbMigration
+    public partial class AddTitleToDb : DbMigration
     {
         public override void Up()
         {
-            AddColumn("dbo.CollectionModels", "Collection_Id", c => c.Int(nullable: false));
+            AddColumn("dbo.SampleModels", "Collection_Title", c => c.String());
         }
         
         public override void Down()
         {
-            DropColumn("dbo.CollectionModels", "Collection_Id");
+            DropColumn("dbo.SampleModels", "Collection_Title");
         }
     }
 }
