@@ -1,21 +1,17 @@
 ﻿@model IEnumerable<TissueSampleDirectory.Models.SampleModels>
 
 
+<h3>Collection Type: @ViewBag.CollectionTitle</h3>
 
 
     <div style="margin-top: 50px">
 
         <p>
-            @Html.ActionLink("Create New", "Create", null, new { @class="btn btn-primary"})
+            @Html.ActionLink("Create New", "Create", new { Title = Request["Title"]}, new { @class="btn btn-success"})
         </p>
         <table class="table">
             <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Collection_Id)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Collection_Title)
-                </th>
+               
                 <th>
                     @Html.DisplayNameFor(model => model.Donor_Count)
                 </th>
@@ -31,12 +27,7 @@
             @foreach (var item in Model)
             {
                 <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Collection_Id)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Collection_Title)
-                    </td>
+                   
                     <td>
                         @Html.DisplayFor(modelItem => item.Donor_Count)
                     </td>
@@ -47,9 +38,8 @@
                         @Html.DisplayFor(modelItem => item.Last_Updated)
                     </td>
                     <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class="btn btn-primary btn-sm "})
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger btn-sm " })
                     </td>
                 </tr>
             }

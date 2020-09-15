@@ -180,21 +180,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202009131433409_AddTablesToDb.cs" />
-    <Compile Include="Migrations\202009131433409_AddTablesToDb.designer.cs">
-      <DependentUpon>202009131433409_AddTablesToDb.cs</DependentUpon>
+    <Compile Include="Migrations\202009141904127_InitialDb.cs" />
+    <Compile Include="Migrations\202009141904127_InitialDb.designer.cs">
+      <DependentUpon>202009141904127_InitialDb.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202009131641557_AddedCollectionId.cs" />
-    <Compile Include="Migrations\202009131641557_AddedCollectionId.designer.cs">
-      <DependentUpon>202009131641557_AddedCollectionId.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202009141353025_AddCollectionTitleToSampleDb.cs" />
-    <Compile Include="Migrations\202009141353025_AddCollectionTitleToSampleDb.designer.cs">
-      <DependentUpon>202009141353025_AddCollectionTitleToSampleDb.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202009141357184_AddTitleToSampleDb.cs" />
-    <Compile Include="Migrations\202009141357184_AddTitleToSampleDb.designer.cs">
-      <DependentUpon>202009141357184_AddTitleToSampleDb.cs</DependentUpon>
+    <Compile Include="Migrations\202009141908536_AddTitleToDb.cs" />
+    <Compile Include="Migrations\202009141908536_AddTitleToDb.designer.cs">
+      <DependentUpon>202009141908536_AddTitleToDb.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -370,6 +362,7 @@
     <Content Include="Views\Collection\Edit.cshtml" />
     <Content Include="Views\Collection\Delete.cshtml" />
     <Content Include="Views\Sample\Index.cshtml" />
+    <Content Include="Views\Sample\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -386,17 +379,11 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202009131433409_AddTablesToDb.resx">
-      <DependentUpon>202009131433409_AddTablesToDb.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202009141904127_InitialDb.resx">
+      <DependentUpon>202009141904127_InitialDb.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202009131641557_AddedCollectionId.resx">
-      <DependentUpon>202009131641557_AddedCollectionId.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202009141353025_AddCollectionTitleToSampleDb.resx">
-      <DependentUpon>202009141353025_AddCollectionTitleToSampleDb.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202009141357184_AddTitleToSampleDb.resx">
-      <DependentUpon>202009141357184_AddTitleToSampleDb.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202009141908536_AddTitleToDb.resx">
+      <DependentUpon>202009141908536_AddTitleToDb.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

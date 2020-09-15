@@ -9,18 +9,15 @@ namespace TissueSampleDirectory.Models
         public int Id { get; set; }
 
         [Required]
-        public int Collection_Id { get; set; }
-
-        [DisplayName("Collection Title")]
-        public string Collection_Title { get; set; }
-
-        [Required]
+        [DisplayName("Donor Count")]
         public int Donor_Count { get; set; }
 
         [Required]
+        [DisplayName("Material Type")]
         public string Material_Type { get; set; }
 
-        [Required]
         public string Last_Updated { get; set; }
+
+        public string Collection_Title { get; set; }
     }
 }
