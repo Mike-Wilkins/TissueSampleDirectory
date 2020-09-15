@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title Digital Healthcare</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
@@ -11,22 +11,14 @@
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            <div class="navbar-header" style="margin:10px">
+                <img src="~/images/DigitalHealthCare.png" height="70"/>
             </div>
-            <div class="navbar-collapse collapse">
+            <div class="navbar-collapse collapse" style="margin-top:22px;">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("Collections", "Index", "Collection")</li>
+                    <li><a href="@Url.Action("Index","Collection")" style="padding:8px; margin-left: 650px"><img src="@Url.Content("~/images/Home.png")" height="30" /></a></li>
                 </ul>
-                @Html.Partial("_LoginPartial")
+              
             </div>
         </div>
     </div>
@@ -34,7 +26,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year - Michael Wilkins</p>
         </footer>
     </div>
 
