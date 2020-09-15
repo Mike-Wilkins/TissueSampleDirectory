@@ -1,42 +1,47 @@
 ﻿@model TissueSampleDirectory.Models.SampleModels
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>Collection Type: @ViewBag.CollectionTitle</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Donor_Count)
-        </dt>
+<div style="margin-top: 70px">
 
-        <dd>
-            @Html.DisplayFor(model => model.Donor_Count)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Material_Type)
-        </dt>
+    <h3>Are you sure you want to delete this?</h3>
+    <div>
+        <h4>Collection Type: @ViewBag.CollectionTitle</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Donor_Count)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Material_Type)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Donor_Count)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Last_Updated)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Material_Type)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Last_Updated)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Material_Type)
+            </dd>
 
-    </dl>
+            <dt>
+                @Html.DisplayNameFor(model => model.Last_Updated)
+            </dt>
 
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
+            <dd>
+                @Html.DisplayFor(model => model.Last_Updated)
+            </dd>
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-danger" style="margin-left: 70px"/> 
-            @Html.ActionLink("Back to List", "Index", new { Title = Request["Title"]}, new { @class="btn btn-primary", @style="margin-left:30px"})
-        </div>
-    }
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-danger" style="margin-left: 70px" />
+                @Html.ActionLink("Back to List", "Index", new { Title = Request["Title"] }, new { @class = "btn btn-primary", @style = "margin-left:30px" })
+            </div>
+        }
+    </div>
 </div>
