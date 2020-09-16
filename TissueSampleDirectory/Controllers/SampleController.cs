@@ -1,9 +1,8 @@
-﻿using System;
+﻿using PagedList;
+using System;
 using System.Linq;
 using System.Web.Mvc;
 using TissueSampleDirectory.Models;
-using PagedList;
-using PagedList.Mvc;
 
 namespace TissueSampleDirectory.Controllers
 {
@@ -50,7 +49,7 @@ namespace TissueSampleDirectory.Controllers
             db.SampleModel.Add(newSample);
             db.SaveChanges();
 
-            var sampleList = db.SampleModel.Where(m => m.Collection_Title == title).ToList().ToPagedList(page ?? 1,6);
+            var sampleList = db.SampleModel.Where(m => m.Collection_Title == title).ToList().ToPagedList(page ?? 1, 6);
 
             return View("Index", sampleList);
         }
@@ -82,7 +81,7 @@ namespace TissueSampleDirectory.Controllers
             db.SampleModel.Add(newSample);
             db.SaveChanges();
 
-            var sampleList = db.SampleModel.Where(m => m.Collection_Title == title).ToList().ToPagedList(page ?? 1,6);
+            var sampleList = db.SampleModel.Where(m => m.Collection_Title == title).ToList().ToPagedList(page ?? 1, 6);
 
             return View("Index", sampleList);
         }
@@ -106,7 +105,7 @@ namespace TissueSampleDirectory.Controllers
             db.SampleModel.Remove(model);
             db.SaveChanges();
 
-            var sampleList = db.SampleModel.Where(m => m.Collection_Title == title).ToList().ToPagedList(page ?? 1,6);
+            var sampleList = db.SampleModel.Where(m => m.Collection_Title == title).ToList().ToPagedList(page ?? 1, 6);
 
             return View("Index", sampleList);
         }

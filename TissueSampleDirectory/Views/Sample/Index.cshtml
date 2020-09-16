@@ -6,7 +6,7 @@
     <div style="margin-top: 70px">
         <h3>Collection Type: @ViewBag.CollectionTitle</h3>
         <p>
-            @Html.ActionLink("Create New", "Create", new { Title = Request["Title"] }, new { @class = "btn btn-success" })
+            @Html.ActionLink("Create New Sample", "Create", new { Title = Request["Title"] }, new { @class = "btn btn-success" })
             @Html.ActionLink("Back to Collection List", "Index", "Collection", new { Title = Request["Title"] }, new { @class = "btn btn-primary", @style = "margin-left:30px" })
         </p>
         <table class="table">

@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using PagedList;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using TissueSampleDirectory.Models;
-using PagedList;
-using PagedList.Mvc;
 
 namespace TissueSampleDirectory.Controllers
 {
@@ -18,7 +14,7 @@ namespace TissueSampleDirectory.Controllers
         public ActionResult Index(int? page)
         {
             var collectList = db.CollectionModel.OrderBy(m => m.Id).ToList().ToPagedList(page ?? 1, 6);
-           
+
             return View(collectList);
         }
 
@@ -42,7 +38,7 @@ namespace TissueSampleDirectory.Controllers
             }
             db.CollectionModel.Add(collection);
             db.SaveChanges();
-            var collectList = db.CollectionModel.OrderBy(m => m.Id).ToList().ToPagedList(page ?? 1,6);
+            var collectList = db.CollectionModel.OrderBy(m => m.Id).ToList().ToPagedList(page ?? 1, 6);
 
             return View("Index", collectList);
         }
@@ -76,9 +72,18 @@ namespace TissueSampleDirectory.Controllers
             db.CollectionModel.Add(newCollection);
             db.SaveChanges();
 
-            var collectList = db.CollectionModel.OrderBy(m => m.Id).ToList().ToPagedList(page ?? 1,6);
+            var collectionList = db.CollectionModel.OrderBy(m => m.Id).ToList();
 
-            return View("Index", collectList);
+            var count = 1;
+            foreach (var item in collectionList)
+            {
+                item.Collection_Id = count;
+                db.SaveChanges();
+                count++;
+            }
+            var orderedList = db.CollectionModel.OrderBy(m => m.Id).ToList().ToPagedList(page ?? 1, 6);
+
+            return View("Index", orderedList);
         }
 
         // GET: Delete
@@ -101,15 +106,17 @@ namespace TissueSampleDirectory.Controllers
             db.CollectionModel.Remove(collection);
             db.SaveChanges();
 
-            var orderedList = db.CollectionModel.OrderBy(m => m.Id).ToList().ToPagedList(page ?? 1,6);
+            var collectionList = db.CollectionModel.OrderBy(m => m.Id).ToList();
 
             var count = 1;
-            foreach(var item in orderedList)
+            foreach (var item in collectionList)
             {
                 item.Collection_Id = count;
                 db.SaveChanges();
                 count++;
             }
+
+            var orderedList = db.CollectionModel.OrderBy(m => m.Id).ToList().ToPagedList(page ?? 1, 6);
 
             return View("Index", orderedList);
         }
