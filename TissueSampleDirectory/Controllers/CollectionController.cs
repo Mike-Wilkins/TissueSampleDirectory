@@ -78,7 +78,6 @@ namespace TissueSampleDirectory.Controllers
 
             var collectList = db.CollectionModel.OrderBy(m => m.Id).ToList().ToPagedList(page ?? 1,6);
 
-
             return View("Index", collectList);
         }
 
