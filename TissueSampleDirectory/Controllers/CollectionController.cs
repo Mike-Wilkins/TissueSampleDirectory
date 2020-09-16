@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using TissueSampleDirectory.Models;
+using PagedList;
+using PagedList.Mvc;
 
 namespace TissueSampleDirectory.Controllers
 {
@@ -13,9 +15,9 @@ namespace TissueSampleDirectory.Controllers
         ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Collection
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
-            var collectList = db.CollectionModel.OrderBy(m => m.Id).ToList();
+            var collectList = db.CollectionModel.OrderBy(m => m.Id).ToList().ToPagedList(page ?? 1, 6);
            
             return View(collectList);
         }
@@ -32,7 +34,7 @@ namespace TissueSampleDirectory.Controllers
 
         //POST: Create
         [HttpPost]
-        public ActionResult Create(CollectionModels collection)
+        public ActionResult Create(CollectionModels collection, int? page)
         {
             if (!ModelState.IsValid)
             {
@@ -40,7 +42,7 @@ namespace TissueSampleDirectory.Controllers
             }
             db.CollectionModel.Add(collection);
             db.SaveChanges();
-            var collectList = db.CollectionModel.OrderBy(m => m.Id).ToList();
+            var collectList = db.CollectionModel.OrderBy(m => m.Id).ToList().ToPagedList(page ?? 1,6);
 
             return View("Index", collectList);
         }
@@ -59,7 +61,7 @@ namespace TissueSampleDirectory.Controllers
 
         // POST: Edit
         [HttpPost]
-        public ActionResult Edit(CollectionModels collection)
+        public ActionResult Edit(CollectionModels collection, int? page)
         {
 
             var oldCollection = db.CollectionModel.Where(m => m.Id == collection.Id).FirstOrDefault();
@@ -74,7 +76,7 @@ namespace TissueSampleDirectory.Controllers
             db.CollectionModel.Add(newCollection);
             db.SaveChanges();
 
-            var collectList = db.CollectionModel.OrderBy(m => m.Id).ToList();
+            var collectList = db.CollectionModel.OrderBy(m => m.Id).ToList().ToPagedList(page ?? 1,6);
 
 
             return View("Index", collectList);
@@ -94,13 +96,13 @@ namespace TissueSampleDirectory.Controllers
         // POST: Delete
         [HttpPost]
         [ActionName("Delete")]
-        public ActionResult DeleteCollection(int id)
+        public ActionResult DeleteCollection(int id, int? page)
         {
             var collection = db.CollectionModel.Where(m => m.Id == id).FirstOrDefault();
             db.CollectionModel.Remove(collection);
             db.SaveChanges();
 
-            var orderedList = db.CollectionModel.OrderBy(m => m.Id).ToList();
+            var orderedList = db.CollectionModel.OrderBy(m => m.Id).ToList().ToPagedList(page ?? 1,6);
 
             var count = 1;
             foreach(var item in orderedList)

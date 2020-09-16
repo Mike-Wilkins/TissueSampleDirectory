@@ -1,4 +1,7 @@
-﻿@model IEnumerable<TissueSampleDirectory.Models.SampleModels>
+﻿@using PagedList;
+@using PagedList.Mvc;
+
+@model IPagedList<TissueSampleDirectory.Models.SampleModels>
 
     <div style="margin-top: 70px">
         <h3>Collection Type: @ViewBag.CollectionTitle</h3>
@@ -8,15 +11,15 @@
         </p>
         <table class="table">
             <tr>
-               
+
                 <th>
-                    @Html.DisplayNameFor(model => model.Donor_Count)
+                    @Html.DisplayNameFor(model => model.First().Donor_Count)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Material_Type)
+                    @Html.DisplayNameFor(model => model.First().Material_Type)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Last_Updated)
+                    @Html.DisplayNameFor(model => model.First().Last_Updated)
                 </th>
                 <th></th>
             </tr>
@@ -24,7 +27,7 @@
             @foreach (var item in Model)
             {
                 <tr>
-                   
+
                     <td>
                         @Html.DisplayFor(modelItem => item.Donor_Count)
                     </td>
@@ -35,11 +38,12 @@
                         @Html.DisplayFor(modelItem => item.Last_Updated)
                     </td>
                     <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.Id, Title = Request["Title"] }, new { @class="btn btn-primary btn-sm "})
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id, Title = Request["Title"] }, new { @class = "btn btn-primary btn-sm " })
                         @Html.ActionLink("Delete", "Delete", new { id = item.Id, Title = Request["Title"] }, new { @class = "btn btn-danger btn-sm " })
                     </td>
                 </tr>
             }
 
         </table>
-     </div>
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page, Title = Request["Title"] }), new PagedListRenderOptions() { Display = PagedListDisplayMode.IfNeeded })
+    </div>
