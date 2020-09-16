@@ -2,6 +2,8 @@
 using System.Linq;
 using System.Web.Mvc;
 using TissueSampleDirectory.Models;
+using PagedList;
+using PagedList.Mvc;
 
 namespace TissueSampleDirectory.Controllers
 {
@@ -10,9 +12,9 @@ namespace TissueSampleDirectory.Controllers
         ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Sample
-        public ActionResult Index(string title)
+        public ActionResult Index(string title, int? page)
         {
-            var sampleList = db.SampleModel.Where(m => m.Collection_Title == title).ToList();
+            var sampleList = db.SampleModel.Where(m => m.Collection_Title == title).ToList().ToPagedList(page ?? 1, 6);
             ViewBag.CollectionTitle = title;
 
             return View(sampleList);
@@ -28,7 +30,7 @@ namespace TissueSampleDirectory.Controllers
 
         // POST: Create
         [HttpPost]
-        public ActionResult Create(SampleModels sample, string title)
+        public ActionResult Create(SampleModels sample, string title, int? page)
         {
             if (!ModelState.IsValid)
             {
@@ -48,7 +50,7 @@ namespace TissueSampleDirectory.Controllers
             db.SampleModel.Add(newSample);
             db.SaveChanges();
 
-            var sampleList = db.SampleModel.Where(m => m.Collection_Title == title).ToList();
+            var sampleList = db.SampleModel.Where(m => m.Collection_Title == title).ToList().ToPagedList(page ?? 1,6);
 
             return View("Index", sampleList);
         }
@@ -63,7 +65,7 @@ namespace TissueSampleDirectory.Controllers
         }
         // POST: Edit
         [HttpPost]
-        public ActionResult Edit(SampleModels sample, string title)
+        public ActionResult Edit(SampleModels sample, string title, int? page)
         {
             ViewBag.CollectionTitle = title;
             var oldSample = db.SampleModel.Where(m => m.Id == sample.Id).FirstOrDefault();
@@ -80,7 +82,7 @@ namespace TissueSampleDirectory.Controllers
             db.SampleModel.Add(newSample);
             db.SaveChanges();
 
-            var sampleList = db.SampleModel.Where(m => m.Collection_Title == title).ToList();
+            var sampleList = db.SampleModel.Where(m => m.Collection_Title == title).ToList().ToPagedList(page ?? 1,6);
 
             return View("Index", sampleList);
         }
@@ -96,7 +98,7 @@ namespace TissueSampleDirectory.Controllers
         // POST: Delete
         [HttpPost]
         [ActionName("Delete")]
-        public ActionResult DeleteSample(string title, int id)
+        public ActionResult DeleteSample(string title, int id, int? page)
         {
 
             ViewBag.CollectionTitle = title;
@@ -104,7 +106,7 @@ namespace TissueSampleDirectory.Controllers
             db.SampleModel.Remove(model);
             db.SaveChanges();
 
-            var sampleList = db.SampleModel.Where(m => m.Collection_Title == title).ToList();
+            var sampleList = db.SampleModel.Where(m => m.Collection_Title == title).ToList().ToPagedList(page ?? 1,6);
 
             return View("Index", sampleList);
         }
